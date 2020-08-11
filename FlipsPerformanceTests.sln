@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlipsPerformanceTests", "FlipsPerformanceTests\FlipsPerformanceTests.csproj", "{B75D5C70-7747-486A-A809-66431453789D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlipsPerformanceTests", "FlipsPerformanceTests\FlipsPerformanceTests.csproj", "{B75D5C70-7747-486A-A809-66431453789D}"
 EndProject
-Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Flips", "..\matthewcrews\flips\Flips\Flips.fsproj", "{03B90E2D-41AD-4C47-BC44-6717BF6FA982}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "LinearExpressionTests", "LinearExpressionTests\LinearExpressionTests.fsproj", "{6695B73B-81CC-41A8-AC9D-A31D670794CD}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "LinearExpressionTests", "LinearExpressionTests\LinearExpressionTests.fsproj", "{6695B73B-81CC-41A8-AC9D-A31D670794CD}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Flips", "..\flips\Flips\Flips.fsproj", "{AB5FF964-6B33-438B-BB95-9CD8FF6C7DA8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,14 +25,6 @@ Global
 		{B75D5C70-7747-486A-A809-66431453789D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B75D5C70-7747-486A-A809-66431453789D}.Release|x64.ActiveCfg = Release|x64
 		{B75D5C70-7747-486A-A809-66431453789D}.Release|x64.Build.0 = Release|x64
-		{03B90E2D-41AD-4C47-BC44-6717BF6FA982}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{03B90E2D-41AD-4C47-BC44-6717BF6FA982}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{03B90E2D-41AD-4C47-BC44-6717BF6FA982}.Debug|x64.ActiveCfg = Debug|x64
-		{03B90E2D-41AD-4C47-BC44-6717BF6FA982}.Debug|x64.Build.0 = Debug|x64
-		{03B90E2D-41AD-4C47-BC44-6717BF6FA982}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{03B90E2D-41AD-4C47-BC44-6717BF6FA982}.Release|Any CPU.Build.0 = Release|Any CPU
-		{03B90E2D-41AD-4C47-BC44-6717BF6FA982}.Release|x64.ActiveCfg = Release|x64
-		{03B90E2D-41AD-4C47-BC44-6717BF6FA982}.Release|x64.Build.0 = Release|x64
 		{6695B73B-81CC-41A8-AC9D-A31D670794CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6695B73B-81CC-41A8-AC9D-A31D670794CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6695B73B-81CC-41A8-AC9D-A31D670794CD}.Debug|x64.ActiveCfg = Debug|x64
@@ -41,6 +33,14 @@ Global
 		{6695B73B-81CC-41A8-AC9D-A31D670794CD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6695B73B-81CC-41A8-AC9D-A31D670794CD}.Release|x64.ActiveCfg = Release|x64
 		{6695B73B-81CC-41A8-AC9D-A31D670794CD}.Release|x64.Build.0 = Release|x64
+		{AB5FF964-6B33-438B-BB95-9CD8FF6C7DA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB5FF964-6B33-438B-BB95-9CD8FF6C7DA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB5FF964-6B33-438B-BB95-9CD8FF6C7DA8}.Debug|x64.ActiveCfg = Debug|x64
+		{AB5FF964-6B33-438B-BB95-9CD8FF6C7DA8}.Debug|x64.Build.0 = Debug|x64
+		{AB5FF964-6B33-438B-BB95-9CD8FF6C7DA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB5FF964-6B33-438B-BB95-9CD8FF6C7DA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB5FF964-6B33-438B-BB95-9CD8FF6C7DA8}.Release|x64.ActiveCfg = Release|x64
+		{AB5FF964-6B33-438B-BB95-9CD8FF6C7DA8}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

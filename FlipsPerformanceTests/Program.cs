@@ -20,11 +20,11 @@ namespace FlipsPerformanceTests
         //    return LinearExpressionTests.PerfTests.addition(NumberToAdd);
         //}
 
-        [Params(10, 100, 1000, 10000, 90900)]
-        public int StartIndex
-        {
-            get; set;
-        }
+        //[Params(900000, 100000, 1000)]
+        //public int StartIndex
+        //{
+        //    get; set;
+        //}
 
         //[Benchmark]
         //public Flips.SliceMap.SMap<int, LinearExpression> SliceMapSliceAndSumTest()
@@ -32,16 +32,40 @@ namespace FlipsPerformanceTests
         //    return LinearExpressionTests.PerfTests.sliceMapGreaterThanMultiplication(StartIndex);
         //}
 
-        [Benchmark]
-        public Flips.SliceMap.SMap<int,LinearExpression> SliceMapLessThanMultiplication()
-        {
-            return LinearExpressionTests.PerfTests.sliceMapLessThanMultiplication(StartIndex);
-        }
+        //[Benchmark]
+        //public Flips.SliceMap.SMap<int,LinearExpression> Multiplication()
+        //{
+        //    return LinearExpressionTests.PerfTests.sliceMapMultiplication();
+        //}
+
+        //[Benchmark]
+        //public LinearExpression SliceMapSumming()
+        //{
+        //    return LinearExpressionTests.PerfTests.sliceMapSumming();
+        //}
+
+        //[Benchmark]
+        //public Flips.SliceMap.SMap<int, double>[] SmallInSlicing()
+        //{
+        //    return LinearExpressionTests.PerfTests.inSlicing_Small();
+        //}
+
+        //[Benchmark]
+        //public Flips.SliceMap.SMap<int, double>[] MediumInSlicing()
+        //{
+        //    return LinearExpressionTests.PerfTests.inSlicing_Medium();
+        //}
+
+        //[Benchmark]
+        //public Flips.SliceMap.SMap<int, double>[] LargeInSlicing()
+        //{
+        //    return LinearExpressionTests.PerfTests.inSlicing_Large();
+        //}
 
         [Benchmark]
-        public LinearExpression SliceMapSumming()
+        public Flips.SliceMap.SMap<int, double>[] Subsetting2DSliceMap()
         {
-            return LinearExpressionTests.PerfTests.sliceMapSumming();
+            return LinearExpressionTests.PerfTests.subsetting2DSliceMap();
         }
 
         static void Main(string[] args)
