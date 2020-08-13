@@ -9,9 +9,15 @@ namespace FlipsPerformanceTests
     {
 
         //[Params(10, 100, 1000, 10000)]
-        //public int NumberToAdd
+        //public int StartIndex
         //{
         //    get; set;
+        //}
+
+        //[Benchmark]
+        //public int greaterThanSlicingTest()
+        //{
+        //    return LinearExpressionTests.PerfTests.greaterThanSlicingTest();
         //}
 
         //[Benchmark]
@@ -20,16 +26,16 @@ namespace FlipsPerformanceTests
         //    return LinearExpressionTests.PerfTests.addition(NumberToAdd);
         //}
 
-        //[Params(900000, 100000, 1000)]
-        //public int StartIndex
+        //[Benchmark]
+        //public Flips.SliceMap.SMap<int, double>[] greaterThanSlice()
         //{
-        //    get; set;
+        //    return LinearExpressionTests.PerfTests.greaterThanSlice(StartIndex);
         //}
 
         //[Benchmark]
         //public Flips.SliceMap.SMap<int, LinearExpression> SliceMapSliceAndSumTest()
         //{
-        //    return LinearExpressionTests.PerfTests.sliceMapGreaterThanMultiplication(StartIndex);
+        //    return LinearExpressionTests.PerfTests.sliceMapLessThanMultiplication(450_000);
         //}
 
         //[Benchmark]
@@ -45,27 +51,39 @@ namespace FlipsPerformanceTests
         //}
 
         //[Benchmark]
-        //public Flips.SliceMap.SMap<int, double>[] SmallInSlicing()
+        //public int SmallInSlicing()
         //{
         //    return LinearExpressionTests.PerfTests.inSlicing_Small();
         //}
 
         //[Benchmark]
-        //public Flips.SliceMap.SMap<int, double>[] MediumInSlicing()
+        //public int MediumInSlicing()
         //{
         //    return LinearExpressionTests.PerfTests.inSlicing_Medium();
         //}
 
         //[Benchmark]
-        //public Flips.SliceMap.SMap<int, double>[] LargeInSlicing()
+        //public int LargeInSlicing()
         //{
         //    return LinearExpressionTests.PerfTests.inSlicing_Large();
         //}
 
+        //[Benchmark]
+        //public int greaterThanSlicingTest()
+        //{
+        //    return LinearExpressionTests.PerfTests.greaterThanSlicingTest();
+        //}
+
         [Benchmark]
-        public Flips.SliceMap.SMap<int, double>[] Subsetting2DSliceMap()
+        public int subsetting2DSliceMapFirstIndex()
         {
-            return LinearExpressionTests.PerfTests.subsetting2DSliceMap();
+            return LinearExpressionTests.PerfTests.subsetting2DSliceMapFirstIndex();
+        }
+
+        [Benchmark]
+        public int subsetting2DSliceMapSecondIndex()
+        {
+            return LinearExpressionTests.PerfTests.subsetting2DSliceMapSecondIndex();
         }
 
         static void Main(string[] args)

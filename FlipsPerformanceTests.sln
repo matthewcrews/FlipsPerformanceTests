@@ -9,6 +9,8 @@ Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "LinearExpressionTests", "Li
 EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Flips", "..\flips\Flips\Flips.fsproj", "{AB5FF964-6B33-438B-BB95-9CD8FF6C7DA8}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FlipsProfiling", "FlipsProfiling\FlipsProfiling.fsproj", "{1B2D6405-A11C-4794-B9FF-543A2AEF5576}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,14 @@ Global
 		{AB5FF964-6B33-438B-BB95-9CD8FF6C7DA8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AB5FF964-6B33-438B-BB95-9CD8FF6C7DA8}.Release|x64.ActiveCfg = Release|x64
 		{AB5FF964-6B33-438B-BB95-9CD8FF6C7DA8}.Release|x64.Build.0 = Release|x64
+		{1B2D6405-A11C-4794-B9FF-543A2AEF5576}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B2D6405-A11C-4794-B9FF-543A2AEF5576}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B2D6405-A11C-4794-B9FF-543A2AEF5576}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1B2D6405-A11C-4794-B9FF-543A2AEF5576}.Debug|x64.Build.0 = Debug|Any CPU
+		{1B2D6405-A11C-4794-B9FF-543A2AEF5576}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B2D6405-A11C-4794-B9FF-543A2AEF5576}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B2D6405-A11C-4794-B9FF-543A2AEF5576}.Release|x64.ActiveCfg = Release|x64
+		{1B2D6405-A11C-4794-B9FF-543A2AEF5576}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
