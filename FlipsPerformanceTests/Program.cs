@@ -74,16 +74,40 @@ namespace FlipsPerformanceTests
         //    return LinearExpressionTests.PerfTests.greaterThanSlicingTest();
         //}
 
-        [Benchmark]
-        public int subsetting2DSliceMapFirstIndex()
+        //[Benchmark]
+        //public int subsetting2DSliceMapFirstIndex()
+        //{
+        //    return LinearExpressionTests.PerfTests.subsetting2DSliceMapFirstIndex();
+        //}
+
+        //[Benchmark]
+        //public int subsetting2DSliceMapSecondIndex()
+        //{
+        //    return LinearExpressionTests.PerfTests.subsetting2DSliceMapSecondIndex();
+        //}
+
+        [Params(10000)]
+        public int NumberItems
         {
-            return LinearExpressionTests.PerfTests.subsetting2DSliceMapFirstIndex();
+            get; set;
+        }
+
+        [Params(100)]
+        public int NumberLocations
+        {
+            get; set;
+        }
+
+        [Params(1)]
+        public int NumberIterations
+        {
+            get; set;
         }
 
         [Benchmark]
         public int subsetting2DSliceMapSecondIndex()
         {
-            return LinearExpressionTests.PerfTests.subsetting2DSliceMapSecondIndex();
+            return LinearExpressionTests.ModelBuilderTests.buildModel(NumberIterations, NumberItems, NumberLocations);
         }
 
         static void Main(string[] args)
