@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\flips\Flips\Flips.fsproj" />
+    <ProjectReference Include="..\..\matthewcrews\flips\Flips\Flips.fsproj" />
   </ItemGroup>
 
 </Project>

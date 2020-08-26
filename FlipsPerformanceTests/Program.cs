@@ -5,6 +5,7 @@ using Flips.Types;
 
 namespace FlipsPerformanceTests
 {
+    [MemoryDiagnoser]
     public class Program
     {
 
@@ -86,28 +87,40 @@ namespace FlipsPerformanceTests
         //    return LinearExpressionTests.PerfTests.subsetting2DSliceMapSecondIndex();
         //}
 
-        [Params(10000)]
-        public int NumberItems
-        {
-            get; set;
-        }
+        //[Params(100, 200, 1000, 2000)]
+        //public int NumberItems
+        //{
+        //    get; set;
+        //}
 
-        [Params(100)]
-        public int NumberLocations
-        {
-            get; set;
-        }
+        //[Params(10, 20, 100, 200)]
+        //public int NumberLocations
+        //{
+        //    get; set;
+        //}
 
-        [Params(1)]
-        public int NumberIterations
+        //[Params(1)]
+        //public int NumberIterations
+        //{
+        //    get; set;
+        //}
+
+        //[Benchmark]
+        //public int buildModel()
+        //{
+        //    return LinearExpressionTests.ModelBuilderTests.buildModel(NumberIterations, NumberItems, NumberLocations);
+        //}
+
+        [Benchmark]
+        public int smap4Addition()
         {
-            get; set;
+            return LinearExpressionTests.PerfTests.smap4Addition();
         }
 
         [Benchmark]
-        public int subsetting2DSliceMapSecondIndex()
+        public int smap4Product()
         {
-            return LinearExpressionTests.ModelBuilderTests.buildModel(NumberIterations, NumberItems, NumberLocations);
+            return LinearExpressionTests.PerfTests.smap4Product();
         }
 
         static void Main(string[] args)

@@ -12,10 +12,10 @@ module PerfTests =
     let numberOfCoefficients = 5_000
     let maxExprSize = 10
     let rng = new System.Random(123)
-    let decisions =
-        [|1 .. numberOfNames|]
-        |> Array.map string
-        |> Array.map (fun x -> Decision.createContinuous x 0.0 infinity)
+    //let decisions =
+    //    [|1 .. numberOfNames|]
+    //    |> Array.map string
+    //    |> Array.map (fun x -> Decision.createContinuous x 0.0 infinity)
 
     //let generateExpr (decisions:Decision []) (rng:System.Random) (maxExpressionSize:int) =
     //    let numberOfElements = rng.Next(1, maxExpressionSize)
@@ -33,9 +33,9 @@ module PerfTests =
     //    |> Array.sum
 
 
-    let coefficients =
-        [|for i in 1..numberOfCoefficients -> i, rng.NextDouble() * 1_000_000.0 |]
-        |> SliceMap.SMap.ofSeq
+    //let coefficients =
+    //    [|for i in 1..numberOfCoefficients -> i, rng.NextDouble() * 1_000_000.0 |]
+    //    |> SliceMap.SMap.ofSeq
         
     //let decisionMap =
     //    [|for i in 1..numberOfCoefficients -> i, (Decision.createContinuous (sprintf "%i" i) 0.0 infinity)|]
@@ -113,117 +113,148 @@ module PerfTests =
     //  output.Keys.Count
 
 
-    let outerIndexSize = 1_000
-    let innerIndexSeize = 100
+    //let outerIndexSize = 1_000
+    //let innerIndexSeize = 100
 
-    let example2D =
-      [|for i in 1..outerIndexSize do 
-            for j in 1..innerIndexSeize ->
-              (i, j), rng.NextDouble()
-      |] |> SMap2.ofSeq
+    //let example2D =
+    //  [|for i in 1..outerIndexSize do 
+    //        for j in 1..innerIndexSeize ->
+    //          (i, j), rng.NextDouble()
+    //  |] |> SMap2.ofSeq
 
-    let subsetting2DSliceMapFirstIndex () =
-        let testRng = new System.Random(123)
-        let mutable output = coefficients
+    //let subsetting2DSliceMapFirstIndex () =
+    //    let testRng = new System.Random(123)
+    //    let mutable output = coefficients
 
-        for i in 1..5_000 do
-          output <- example2D.[testRng.Next(1, outerIndexSize), All]
+    //    for i in 1..5_000 do
+    //      output <- example2D.[testRng.Next(1, outerIndexSize), All]
 
-        output.Keys.Count
+    //    output.Keys.Count
 
-    let subsetting2DSliceMapSecondIndex () =
-        let testRng = new System.Random(123)
-        let mutable output = coefficients
+    //let subsetting2DSliceMapSecondIndex () =
+    //    let testRng = new System.Random(123)
+    //    let mutable output = coefficients
 
-        for i in 1..500 do
-          output <- example2D.[All, testRng.Next(1, innerIndexSeize)]
+    //    for i in 1..500 do
+    //      output <- example2D.[All, testRng.Next(1, innerIndexSeize)]
 
-        output.Keys.Count
+    //    output.Keys.Count
 
-
-module ModelBuilderTests =
-
-  let numberOfItems = 10_000
-  let numberOfLocations = 1_000
-  let rng = System.Random(123)
-  let items = [for i in 1..numberOfItems -> sprintf "Item:%i" i]
-  let locations = [for l in 1..numberOfLocations -> sprintf "Location:%i" l]
-
-  // Create Decision Variable which is keyed by the tuple of Item and Location.
-  // The resulting type is a Map<(string*string),Decision> 
-  // to represent how much of each item we should pack for each location
-  // with a Lower Bound of 0.0 and an Upper Bound of Infinity
+    //let rng = System.Random(123)
+    let numberOfSMap4s = 100
+    let smap4s =
+        [| for _ in 1..numberOfSMap4s ->
+            seq {for i in 1..100 do for j in 1..10 do for k in 1..5 do for l in 1..5 -> (string i, string j, string k, string l), rng.NextDouble() * 10.0}
+            |> SMap4
+        |]
 
 
-  let buildModel (numIterations, numItems, numLocations) =
-    let mutable result = Result.Ok ()
-    let rng = System.Random(123)
-    for i in 1..numIterations do
+    let smap4Addition () =
+        let rng = System.Random(123)
+        let mutable result = SMap4 []
+        let empty = SMap4 []
 
-        let items = items.[..numItems]
-        let locations = locations.[..numLocations]
+        for _ in 0..100 do
+            result <- smap4s.[rng.Next(0, numberOfSMap4s-1)] + smap4s.[rng.Next(0, numberOfSMap4s-1)]
 
-        let profit = 
-            [|
-              for i in items do
-                for l in locations ->
-                  (i, l), rng.NextDouble() * 100.0
-            |] |> SMap2.ofArray
+        result.Values.Length
 
-        let maxIngredients = SMap.ofList [for item in items -> item, Math.Round(rng.NextDouble() * 1_000.0, 2)]
-        let itemWeight = SMap.ofList [for item in items -> item, Math.Round(rng.NextDouble() * 2.0, 2)]
-        let maxTruckWeight = SMap.ofList [for location in locations -> location, Math.Round(rng.NextDouble() * 10_000.0, 2)]
+
+    let smap4Product () =
+        let rng = System.Random(123)
+        let mutable result = SMap4 []
+        let empty = SMap4 []
+
+        for _ in 0..100 do
+            result <- smap4s.[rng.Next(0, numberOfSMap4s-1)] .* smap4s.[rng.Next(0, numberOfSMap4s-1)]
+
+        result.Values.Length
+            
+
+
+//module ModelBuilderTests =
+
+//  let numberOfItems = 10_000
+//  let numberOfLocations = 1_000
+//  let rng = System.Random(123)
+//  let items = [for i in 1..numberOfItems -> sprintf "Item:%i" i]
+//  let locations = [for l in 1..numberOfLocations -> sprintf "Location:%i" l]
+
+//  // Create Decision Variable which is keyed by the tuple of Item and Location.
+//  // The resulting type is a Map<(string*string),Decision> 
+//  // to represent how much of each item we should pack for each location
+//  // with a Lower Bound of 0.0 and an Upper Bound of Infinity
+
+
+//  let buildModel (numIterations, numItems, numLocations) =
+//    let mutable result = Result.Ok ()
+//    let rng = System.Random(123)
+//    for i in 1..numIterations do
+
+//        let items = items.[..numItems]
+//        let locations = locations.[..numLocations]
+
+//        let profit = 
+//            [|
+//              for i in items do
+//                for l in locations ->
+//                  (i, l), rng.NextDouble() * 100.0
+//            |] |> SMap2.ofArray
+
+//        let maxIngredients = SMap.ofList [for item in items -> item, Math.Round(rng.NextDouble() * 1_000.0, 2)]
+//        let itemWeight = SMap.ofList [for item in items -> item, Math.Round(rng.NextDouble() * 2.0, 2)]
+//        let maxTruckWeight = SMap.ofList [for location in locations -> location, Math.Round(rng.NextDouble() * 10_000.0, 2)]
         
-        let numberOfItem =
-            [|for item in items do
-                for location in locations do
-                    let decName = sprintf "NumberOf_%s_At_%s" item location
-                    let decision = Decision.createContinuous decName 0.0 infinity
-                    (location, item), decision |]
-            |> SMap2.ofArray
+//        let numberOfItem =
+//            [|for item in items do
+//                for location in locations do
+//                    let decName = sprintf "NumberOf_%s_At_%s" item location
+//                    let decision = Decision.createContinuous decName 0.0 infinity
+//                    (location, item), decision |]
+//            |> SMap2.ofArray
 
-        // Create the Linear Expression for the objective
-        let objectiveExpression = sum (profit .* numberOfItem)
+//        // Create the Linear Expression for the objective
+//        let objectiveExpression = sum (profit .* numberOfItem)
 
-        // Create an Objective with the name "MaximizeRevenue" the goal of Maximizing
-        // the Objective Expression
-        let objective = Objective.create "MaximizeRevenue" Maximize objectiveExpression
+//        // Create an Objective with the name "MaximizeRevenue" the goal of Maximizing
+//        // the Objective Expression
+//        let objective = Objective.create "MaximizeRevenue" Maximize objectiveExpression
     
-        // Create Total Item Maximum constraints for each item
-        let maxItemConstraints =
-            ConstraintBuilder "MaxItemTotal" { 
-              for item in items ->
-                sum (1.0 * numberOfItem.[All, item]) <== maxIngredients.[item]
-            }
+//        // Create Total Item Maximum constraints for each item
+//        let maxItemConstraints =
+//            ConstraintBuilder "MaxItemTotal" { 
+//              for item in items ->
+//                sum (1.0 * numberOfItem.[All, item]) <== maxIngredients.[item]
+//            }
 
 
-        // Create a Constraint for the Max combined weight of items for each Location
-        let maxWeightConstraints = 
-            ConstraintBuilder "MaxTotalWeight" {
-              for location in locations -> 
-                let lhsProduct = itemWeight .* numberOfItem.[location, All]
-                let lhs = sum lhsProduct
-                let rhs = maxTruckWeight.[location]
-                lhs <== rhs
-            }
+//        // Create a Constraint for the Max combined weight of items for each Location
+//        let maxWeightConstraints = 
+//            ConstraintBuilder "MaxTotalWeight" {
+//              for location in locations -> 
+//                let lhsProduct = itemWeight .* numberOfItem.[location, All]
+//                let lhs = sum lhsProduct
+//                let rhs = maxTruckWeight.[location]
+//                lhs <== rhs
+//            }
 
-        // Create a Model type and pipe it through the addition of the constraints
-        let model =
-            Model.create objective
-            |> Model.addConstraints maxItemConstraints
-            |> Model.addConstraints maxWeightConstraints
+//        // Create a Model type and pipe it through the addition of the constraints
+//        let model =
+//            Model.create objective
+//            |> Model.addConstraints maxItemConstraints
+//            |> Model.addConstraints maxWeightConstraints
 
-        // Create a Settings type which tells the Solver which types of underlying solver to use,
-        // the time alloted for solving, and whether to write an LP file to disk
-        let settings = {
-            SolverType = SolverType.CBC
-            MaxDuration = 10_000L
-            WriteLPFile = None
-        }
+//        // Create a Settings type which tells the Solver which types of underlying solver to use,
+//        // the time alloted for solving, and whether to write an LP file to disk
+//        let settings = {
+//            SolverType = SolverType.CBC
+//            MaxDuration = 10_000L
+//            WriteLPFile = None
+//        }
 
-        // Call the `solve` function in the Solve module to evaluate the model
-        result <- Solver.solve settings model
+//        // Call the `solve` function in the Solve module to evaluate the model
+//        result <- Solver.solve settings model
 
-    match result with
-    | Ok _ -> 1
-    | Error _ -> 0
+//    match result with
+//    | Ok _ -> 1
+//    | Error _ -> 0

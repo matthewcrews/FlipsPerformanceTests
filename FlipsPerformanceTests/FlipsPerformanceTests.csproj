@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\matthewcrews\flips\Flips\Flips.fsproj" />
     <ProjectReference Include="..\LinearExpressionTests\LinearExpressionTests.fsproj" />
   </ItemGroup>
 
